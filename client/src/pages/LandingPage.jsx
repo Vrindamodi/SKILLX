@@ -98,7 +98,7 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link to="/register">
+              <Link to="/onboarding">
                 <button className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-blue-600 px-10 text-lg font-bold text-white shadow-xl shadow-blue-600/30 hover:bg-blue-500 hover:shadow-blue-600/40 transition-all active:scale-95">
                   Get Started for Free <ArrowRight className="h-5 w-5" />
                 </button>
