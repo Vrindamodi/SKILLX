@@ -4,10 +4,7 @@ import { useAuth } from './AuthContext';
 
 const SocketContext = createContext(null);
 
-const SOCKET_URL =
-  process.env.NODE_ENV === 'production'
-    ? window.location.origin
-    : 'https://skillx-zf0k.onrender.com';
+const SOCKET_URL = 'https://skillx-zf0k.onrender.com';
 
 export function SocketProvider({ children }) {
   const { user, token, isAuthenticated } = useAuth();
