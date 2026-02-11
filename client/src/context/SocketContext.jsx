@@ -7,7 +7,7 @@ const SocketContext = createContext(null);
 const SOCKET_URL =
   process.env.NODE_ENV === 'production'
     ? window.location.origin
-    : 'http://localhost:5000';
+    : 'https://skillx-zf0k.onrender.com';
 
 export function SocketProvider({ children }) {
   const { user, token, isAuthenticated } = useAuth();
