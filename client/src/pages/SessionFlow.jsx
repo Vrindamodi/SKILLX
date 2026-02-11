@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -656,7 +656,20 @@ export default function SessionFlow() {
       setLoading(true);
       try {
         const res = await sessionAPI.getMySessions();
-        setSessions(res.data.sessions || res.data || []);
+        const data = res.data.data || res.data.sessions || [];
+        const sessionsArray = Array.isArray(data) ? data : [];
+        // Normalize session data structure
+        const normalized = sessionsArray.map(s => ({
+          ...s,
+          id: s.id || s._id,
+          teacherName: s.teacher?.name || s.teacherName,
+          learnerName: s.learner?.name || s.learnerName,
+          scheduledAt: s.scheduling?.date || s.scheduledAt,
+          price: s.payment?.amount || s.price,
+          duration: s.scheduling?.duration || s.duration,
+          type: s.sessionType || s.type,
+        }));
+        setSessions(normalized);
       } catch {
         setSessions(mockSessions);
       } finally {
@@ -675,6 +688,7 @@ export default function SessionFlow() {
   }, [paramId, sessions]);
 
   const filteredSessions = useMemo(() => {
+    if (!Array.isArray(sessions)) return [];
     if (activeTab === 'all') return sessions;
     if (activeTab === 'upcoming') return sessions.filter((s) => ['pending', 'confirmed', 'escrow_paid', 'scheduled'].includes(s.status));
     if (activeTab === 'in_progress') return sessions.filter((s) => s.status === 'in_progress');
