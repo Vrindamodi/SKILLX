@@ -26,6 +26,7 @@ import Notifications from './pages/Notifications';
 import AdminDashboard from './pages/AdminDashboard';
 import SocialImpact from './pages/SocialImpact';
 import StrawberryWidget from './components/ai/StrawberryWidget';
+import LandingPage from './pages/LandingPage';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -46,7 +47,7 @@ function App() {
     <>
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<Splash />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/onboarding" element={<PublicRoute><Onboarding /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />

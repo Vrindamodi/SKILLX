@@ -151,7 +151,9 @@ export default function PostDetail() {
       setLoading(true);
       try {
         const res = await postAPI.getById(id);
-        setPost(res.data.post || res.data);
+        console.log('Fetched post:', res.data.data);
+        setPost(res.data.data);
+        console.log(post);
       } catch {
         // Fallback to mock
         const found = mockPosts.find((p) => p.id === id);
@@ -318,7 +320,7 @@ export default function PostDetail() {
                 <div className="rounded-xl bg-white/[0.03] border border-white/5 p-3 text-center">
                   <div className="flex items-center justify-center gap-1 text-lg font-bold text-white">
                     <IndianRupee className="h-4 w-4" />
-                    {post.budget}
+                    {post.pricing.amount}
                   </div>
                   <p className="text-xs text-gray-500">
                     {post.budgetType === 'per_hour' ? 'per hour' : post.budgetType === 'per_session' ? 'per session' : 'fixed'}
@@ -327,7 +329,7 @@ export default function PostDetail() {
                 <div className="rounded-xl bg-white/[0.03] border border-white/5 p-3 text-center">
                   <div className="flex items-center justify-center gap-1 text-lg font-bold text-white">
                     <MessageSquare className="h-4 w-4 text-blue-400" />
-                    {post.responses}
+                    {post.responses.length}
                   </div>
                   <p className="text-xs text-gray-500">responses</p>
                 </div>
@@ -342,7 +344,7 @@ export default function PostDetail() {
                   <div className="flex items-center justify-center gap-1 text-lg font-bold text-white">
                     <MapPin className="h-4 w-4 text-orange-400" />
                   </div>
-                  <p className="text-xs text-gray-500">{post.city}</p>
+                  <p className="text-xs mt-2 text-gray-500">{post.author.city}</p>
                 </div>
               </div>
 
