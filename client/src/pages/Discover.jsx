@@ -484,9 +484,29 @@ export default function Discover() {
         if (selectedSkill) params.skill = selectedSkill;
 
         const res = await postAPI.getAll(params);
-        if (!cancelled && res.data?.posts) {
-          setPosts(res.data.posts);
-          setHasMore(res.data.posts.length >= postsPerPage * page);
+        if (!cancelled) {
+          // Map API response to expected format
+          const apiPosts = res.data?.data || res.data?.posts || res.data || [];
+          const mappedPosts = apiPosts.map(post => ({
+            id: post._id,
+            userName: post.author?.name || 'Unknown',
+            userAvatar: post.author?.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.author?.name || 'U'),
+            city: post.author?.city || post.location?.city || 'Unknown',
+            mode: post.mode,
+            skill: post.skill,
+            title: post.title,
+            description: post.description,
+            budget: post.pricing?.amount || 0,
+            budgetType: post.pricing?.per === 'hour' ? 'per_hour' : post.pricing?.per === 'session' ? 'per_session' : 'fixed',
+            responses: post.responses?.length || 0,
+            views: post.views || 0,
+            isRemote: post.isOnline !== undefined ? post.isOnline : true,
+            category: post.category,
+            createdAt: post.createdAt,
+            rating: post.author?.stats?.avgRating || 0,
+          }));
+          setPosts(mappedPosts);
+          setHasMore(mappedPosts.length >= postsPerPage * page);
         }
       } catch {
         // API failed — fallback to mock data with local filtering
