@@ -10,7 +10,7 @@ import Transaction from '../models/Transaction.js';
 import Notification from '../models/Notification.js';
 import LearningPath from '../models/LearningPath.js';
 
-dotenv.config({ path: '../../.env' });
+dotenv.config({ path: '../.env' });
 
 const seedDatabase = async () => {
   try {
@@ -36,6 +36,14 @@ const seedDatabase = async () => {
       Notification.deleteMany({}),
       LearningPath.deleteMany({})
     ]);
+    
+    // Drop and recreate indexes on Post collection to fix geo index
+    try {
+      await mongoose.connection.collection('posts').dropIndexes();
+      console.log('Dropped existing Post indexes');
+    } catch (e) {
+      // Indexes might not exist, ignore
+    }
     
     // Create Users
     console.log('Creating users...');
@@ -365,7 +373,7 @@ const seedDatabase = async () => {
         category: 'trades_services', title: 'Professional Home Cleaning - Eco-Friendly Products',
         description: 'Complete home cleaning service using eco-friendly products. Available Mon-Sat, 8AM-6PM. 5km radius from Kothrud, Pune.',
         pricing: { amount: 1500, per: 'task', negotiable: true }, isOnline: false,
-        location: { city: 'Pune', locality: 'Kothrud', radius: 5 },
+        location: { city: 'Pune', locality: 'Kothrud', radius: 5, coordinates: { type: 'Point', coordinates: [73.8074, 18.5074] } },
         tags: ['cleaning', 'eco-friendly', 'home']
       },
       {
@@ -373,7 +381,7 @@ const seedDatabase = async () => {
         category: 'trades_services', title: 'Expert Plumbing Services - All Repairs & Installations',
         description: 'Professional plumbing services including pipe repairs, tap installations, and drainage fixing.',
         pricing: { amount: 800, per: 'task', negotiable: true }, isOnline: false,
-        location: { city: 'Pune', locality: 'Kothrud', radius: 10 },
+        location: { city: 'Pune', locality: 'Kothrud', radius: 10, coordinates: { type: 'Point', coordinates: [73.8074, 18.5074] } },
         tags: ['plumbing', 'repairs', 'installation']
       },
       {
@@ -381,7 +389,7 @@ const seedDatabase = async () => {
         category: 'trades_services', title: 'Need home cleaning for 2-BHK apartment',
         description: 'Looking for a professional cleaner for my 2-BHK apartment in Koramangala. Pet-friendly products preferred.',
         pricing: { amount: 1500, per: 'task' }, isOnline: false,
-        location: { city: 'Bangalore', locality: 'Koramangala' },
+        location: { city: 'Bangalore', locality: 'Koramangala', coordinates: { type: 'Point', coordinates: [77.6245, 12.9352] } },
         requirements: 'Pet-friendly products, available on weekends',
         tags: ['cleaning', 'pet-friendly', 'weekend']
       },

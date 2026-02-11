@@ -44,9 +44,9 @@ const postSchema = new mongoose.Schema({
   location: {
     city: String,
     locality: String,
-    radius: { type: Number, default: 5 },
+    radius: Number,
     coordinates: {
-      type: { type: String, default: 'Point' },
+      type: { type: String, enum: ['Point'] },
       coordinates: [Number]
     }
   },
@@ -88,6 +88,6 @@ const postSchema = new mongoose.Schema({
 
 postSchema.index({ skill: 'text', title: 'text', description: 'text' });
 postSchema.index({ mode: 1, status: 1 });
-postSchema.index({ 'location.coordinates': '2dsphere' });
+postSchema.index({ 'location.coordinates': '2dsphere' }, { sparse: true });
 
 export default mongoose.model('Post', postSchema);
