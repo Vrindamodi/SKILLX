@@ -100,22 +100,29 @@ function ProgressBar({ label, value, max, color = 'from-blue-500 to-cyan-400', s
 function BarChart({ data, color = 'from-blue-600 to-indigo-400' }) {
   const maxVal = Math.max(...data.map((d) => d.value), 1);
   return (
-    <div className="flex items-end gap-3 h-40">
-      {data.map((d) => {
-        const height = (d.value / maxVal) * 100;
-        return (
-          <div key={d.label} className="flex flex-1 flex-col items-center gap-1.5">
-            <span className="text-xs text-gray-400">₹{(d.value / 1000).toFixed(1)}k</span>
-            <motion.div
-              className={`w-full rounded-t-lg bg-gradient-to-t ${color}`}
-              initial={{ height: 0 }}
-              animate={{ height: `${height}%` }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-            />
-            <span className="text-xs text-gray-500">{d.label}</span>
-          </div>
-        );
-      })}
+    <div className="space-y-2">
+      <div className="flex items-end justify-between gap-3 h-48">
+        {data.map((d, i) => {
+          const height = (d.value / maxVal) * 100;
+          return (
+            <div key={d.label} className="flex flex-1 flex-col items-center gap-2 h-full">
+              <div className="flex-1 w-full flex flex-col justify-end">
+                <div className="text-center mb-1">
+                  <span className="text-xs text-gray-400 font-medium">₹{(d.value / 1000).toFixed(1)}k</span>
+                </div>
+                <motion.div
+                  className={`w-full rounded-t-lg bg-gradient-to-t ${color}`}
+                  initial={{ height: '0%' }}
+                  animate={{ height: `${height}%` }}
+                  transition={{ duration: 0.6, ease: 'easeOut', delay: i * 0.1 }}
+                  style={{ minHeight: '4px' }}
+                />
+              </div>
+              <span className="text-xs text-gray-500 mt-1">{d.label}</span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -396,19 +403,26 @@ function TeachingTab({ data }) {
         <motion.div variants={item}>
           <GlassCard className="p-6">
             <h3 className="text-lg font-semibold text-white mb-5">Rating Trend</h3>
-            <div className="flex items-end gap-4 h-36">
-              {teaching.ratingTrend.map((d) => {
-                const height = ((d.value - 4) / 1) * 100;
+            <div className="flex items-end justify-between gap-4 h-48">
+              {teaching.ratingTrend.map((d, i) => {
+                const minRating = 4.0;
+                const maxRating = 5.0;
+                const height = ((d.value - minRating) / (maxRating - minRating)) * 100;
                 return (
-                  <div key={d.label} className="flex flex-1 flex-col items-center gap-1.5">
-                    <span className="text-xs text-yellow-400 font-medium">{d.value}</span>
-                    <motion.div
-                      className="w-full rounded-t-lg bg-gradient-to-t from-yellow-600 to-amber-400"
-                      initial={{ height: 0 }}
-                      animate={{ height: `${Math.max(height, 10)}%` }}
-                      transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-                    />
-                    <span className="text-xs text-gray-500">{d.label}</span>
+                  <div key={d.label} className="flex flex-1 flex-col items-center gap-2 h-full">
+                    <div className="flex-1 w-full flex flex-col justify-end">
+                      <div className="text-center mb-1">
+                        <span className="text-xs text-yellow-400 font-semibold">{d.value}</span>
+                      </div>
+                      <motion.div
+                        className="w-full rounded-t-lg bg-gradient-to-t from-yellow-600 to-amber-400"
+                        initial={{ height: '0%' }}
+                        animate={{ height: `${Math.max(height, 5)}%` }}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: i * 0.1 }}
+                        style={{ minHeight: '8px' }}
+                      />
+                    </div>
+                    <span className="text-xs text-gray-500 mt-1">{d.label}</span>
                   </div>
                 );
               })}
@@ -628,7 +642,8 @@ export default function Analytics() {
     return () => { cancelled = true; };
   }, []);
 
-  const data = analyticsData || mockAnalytics;
+  // Merge API data with mock data to ensure all fields exist
+  const data = analyticsData ? { ...mockAnalytics, ...analyticsData } : mockAnalytics;
 
   if (loading) {
     return (

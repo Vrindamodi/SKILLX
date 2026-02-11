@@ -21,7 +21,7 @@ export function NotificationProvider({ children }) {
 
     setLoading(true);
     try {
-      const res = await notificationAPI.getNotifications();
+      const res = await notificationAPI.getAll();
       const items = res.data.notifications || [];
       setNotifications(items);
       setUnreadCount(computeUnread(items));
@@ -34,7 +34,7 @@ export function NotificationProvider({ children }) {
 
   const markAsRead = useCallback(async (notificationId) => {
     try {
-      await notificationAPI.markAsRead(notificationId);
+      await notificationAPI.markRead(notificationId);
       setNotifications((prev) => {
         const updated = prev.map((n) =>
           n._id === notificationId ? { ...n, read: true } : n
@@ -49,7 +49,7 @@ export function NotificationProvider({ children }) {
 
   const markAllAsRead = useCallback(async () => {
     try {
-      await notificationAPI.markAllAsRead();
+      await notificationAPI.markAllRead();
       setNotifications((prev) =>
         prev.map((n) => ({ ...n, read: true }))
       );
