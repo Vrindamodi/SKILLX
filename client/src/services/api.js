@@ -29,6 +29,7 @@ api.interceptors.response.use(
   }
 );
 
+
 // Auth
 export const authAPI = {
   login: (data) => api.post('/auth/login', data),

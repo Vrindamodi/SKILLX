@@ -87,7 +87,7 @@ function GlassCard({ children, className = '', ...props }) {
 function StatCard({ icon: Icon, value, label, trend, color }) {
   const positive = trend >= 0;
   return (
-    <motion.div variants={item}>
+    <motion.div variants={item}>  
       <GlassCard className="p-5 hover:border-white/20 transition-colors">
         <div className="flex items-start justify-between">
           <div
@@ -181,7 +181,7 @@ function LearnModeContent({ posts, sessions, capsules, paths }) {
                       <span>40%</span>
                     </div>
                     <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-white/10">
-                      <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400" style={{ width: '40%' }} />
+                      <div className="h-full rounded-full bg-emerald-500" style={{ width: '40%' }} />
                     </div>
                   </div>
                 </GlassCard>
@@ -533,7 +533,7 @@ export default function Dashboard() {
             {/* Welcome */}
             <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <h1 className="text-2xl font-bold sm:text-3xl">
-                Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">{currentUser.name?.split(' ')[0] || 'Learner'}</span>
+                Welcome back, <span className="text-blue-400">{currentUser.name?.split(' ')[0] || 'Learner'}</span>
               </h1>
               <p className="mt-1 text-gray-400">
                 You&apos;re in <span className="font-semibold" style={{ color: modeInfo?.color }}>{modeInfo?.label}</span> mode &mdash; {modeInfo?.description}
@@ -635,7 +635,7 @@ export default function Dashboard() {
                   </div>
                   <div className="h-3 overflow-hidden rounded-full bg-white/10">
                     <motion.div
-                      className="h-full rounded-full bg-gradient-to-r from-yellow-500 to-amber-400"
+                      className="h-full rounded-full bg-yellow-500"
                       initial={{ width: 0 }}
                       animate={{ width: `${levelInfo.progress}%` }}
                       transition={{ duration: 1, ease: 'easeOut' }}
@@ -682,7 +682,7 @@ export default function Dashboard() {
                       </div>
                       <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                          className="h-full rounded-full bg-blue-500"
                           style={{ width: `${skill.demand}%` }}
                         />
                       </div>

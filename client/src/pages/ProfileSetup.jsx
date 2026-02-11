@@ -75,7 +75,7 @@ function ProgressBar({ currentStep, totalSteps }) {
       </div>
       <div className="h-2 overflow-hidden rounded-full bg-white/10">
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+          className="h-full rounded-full bg-blue-500"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -412,7 +412,7 @@ function StepSkillDNA({ data, setData, errors }) {
                         type="button"
                         disabled={alreadyAdded}
                         onClick={() => addKnownSkill(s)}
-                        className={`mr-1 text-xs ${alreadyAdded ? 'text-gray-700' : 'text-blue-400 hover:text-blue-300 hover:underline'}`}
+                        className={`mr-1 rounded-xl border px-4 py-2 text-sm font-medium transition-all ${alreadyAdded ? 'border-purple-500/30 bg-purple-500/15 text-purple-300' : 'border-white/10 text-gray-400 hover:bg-white/5'}`}
                       >
                         {s}
                       </button>
@@ -763,7 +763,7 @@ export default function ProfileSetup() {
     languages: user?.languages || [],
     knownSkills: [],
     wantToLearn: [],
-    preferredMode: 'learn',
+    preferredMode: ['learn'],
     bio: user?.bio || '',
     availability: {},
   });
@@ -871,7 +871,7 @@ export default function ProfileSetup() {
         >
           <h1 className="text-2xl font-bold text-white sm:text-3xl">
             Complete Your{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+            <span className="text-transparent bg-clip-text bg-blue-400">
               Profile
             </span>
           </h1>
@@ -928,7 +928,7 @@ export default function ProfileSetup() {
                   type="button"
                   onClick={handleComplete}
                   disabled={submitting}
-                  className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2.5 text-sm font-medium text-white transition-all hover:from-blue-500 hover:to-purple-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-medium text-white transition-all hover:from-blue-500 hover:to-purple-500 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {submitting ? (
                     <>

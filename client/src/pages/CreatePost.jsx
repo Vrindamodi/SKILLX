@@ -80,11 +80,10 @@ function Toast({ message, type = 'success', onClose }) {
       initial={{ opacity: 0, y: -40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -40 }}
-      className={`fixed right-4 top-4 z-[100] flex items-center gap-3 rounded-xl border px-5 py-3 shadow-xl backdrop-blur-xl ${
-        type === 'success'
+      className={`fixed right-4 top-4 z-[100] flex items-center gap-3 rounded-xl border px-5 py-3 shadow-xl backdrop-blur-xl ${type === 'success'
           ? 'border-green-500/30 bg-green-900/80 text-green-200'
           : 'border-red-500/30 bg-red-900/80 text-red-200'
-      }`}
+        }`}
     >
       {type === 'success' ? <CheckCircle2 className="h-5 w-5" /> : <AlertCircle className="h-5 w-5" />}
       <span className="text-sm font-medium">{message}</span>
@@ -144,9 +143,8 @@ function SkillAutocomplete({ value, onChange }) {
                   onChange(skill);
                   setOpen(false);
                 }}
-                className={`block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/10 ${
-                  skill === value ? 'text-blue-400 bg-blue-500/10' : 'text-gray-300'
-                }`}
+                className={`block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/10 ${skill === value ? 'text-blue-400 bg-blue-500/10' : 'text-gray-300'
+                  }`}
               >
                 {skill}
               </button>
@@ -216,7 +214,7 @@ function PreviewCard({ data, mode, user }) {
           <div className="absolute left-0 top-0 h-full w-1 rounded-l-xl" style={{ backgroundColor: MODE_CONFIG[mode]?.color }} />
 
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold text-white">
+            <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold text-white">
               {user?.name?.[0] || 'U'}
             </div>
             <div>
@@ -348,7 +346,7 @@ export default function CreatePost() {
     requirements, budgetMin, budgetMax, urgency,
   ]);
 
-  const isValid = skill && title.length >= 5 && description.length >= 20 && pricing.amount;
+  const isValid = skill && title.length >= 0 && description.length >= 0 && pricing.amount;
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -357,6 +355,7 @@ export default function CreatePost() {
     try {
       await postAPI.create(formData);
       setToast({ message: 'Post created successfully! Redirecting...', type: 'success' });
+      console.log('Created post data:', formData);
       setTimeout(() => navigate('/discover'), 1500);
     } catch (err) {
       setToast({ message: err.response?.data?.message || 'Failed to create post. Please try again.', type: 'error' });
@@ -368,7 +367,7 @@ export default function CreatePost() {
   const inputClass =
     'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none placeholder:text-gray-500 focus:border-blue-500/50 transition-colors';
   const selectClass =
-    'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-blue-500/50 transition-colors';
+    'w-48 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-blue-500/50 transition-colors';
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -412,11 +411,10 @@ export default function CreatePost() {
                         key={key}
                         type="button"
                         onClick={() => setSelectedMode(key)}
-                        className={`flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all ${
-                          active
+                        className={`flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all ${active
                             ? `${c.bg} ${c.text} ${c.border} ring-1 ${c.ring}`
                             : 'border-white/10 text-gray-400 hover:bg-white/5'
-                        }`}
+                          }`}
                       >
                         <span className="text-lg">{cfg.icon}</span>
                         {cfg.label}
@@ -469,14 +467,14 @@ export default function CreatePost() {
                         value={pricing.amount}
                         onChange={(e) => setPricing({ ...pricing, amount: e.target.value })}
                         placeholder="Amount"
-                        className={`${inputClass} pl-9`}
+                        className={`${inputClass} pl-8`}
                         min={0}
                       />
                     </div>
                     <select
                       value={pricing.type}
                       onChange={(e) => setPricing({ ...pricing, type: e.target.value })}
-                      className={`w-32 ${selectClass}`}
+                      className={`w-8 ${selectClass}`}
                     >
                       {PRICING_TYPES.map((pt) => (
                         <option key={pt.value} value={pt.value}>
@@ -625,11 +623,10 @@ export default function CreatePost() {
                                 key={opt}
                                 type="button"
                                 onClick={() => setBatchSize(opt)}
-                                className={`flex items-center gap-1.5 rounded-xl border px-4 py-2 text-sm transition-all ${
-                                  batchSize === opt
+                                className={`flex items-center gap-1.5 rounded-xl border px-4 py-2 text-sm transition-all ${batchSize === opt
                                     ? `${mc.bg} ${mc.text} ${mc.border}`
                                     : 'border-white/10 text-gray-400 hover:bg-white/5'
-                                }`}
+                                  }`}
                               >
                                 <Users className="h-4 w-4" />
                                 {opt === '1-on-1' ? '1-on-1' : opt === 'small_group' ? 'Small (2-5)' : 'Large (5+)'}
@@ -702,8 +699,11 @@ export default function CreatePost() {
                           <select value={city} onChange={(e) => setCity(e.target.value)} className={selectClass}>
                             <option value="">Select city</option>
                             {INDIAN_CITIES.map((c) => (
-                              <option key={c} value={c}>{c}</option>
+                              <option key={c} value={c} className="bg-gray-900 text-gray-300">
+                                {c}
+                              </option>
                             ))}
+
                           </select>
                         </FormField>
                         <FormField label="Locality">
@@ -739,11 +739,10 @@ export default function CreatePost() {
                                 key={opt.value}
                                 type="button"
                                 onClick={() => setToolsProvision(opt.value)}
-                                className={`flex flex-1 items-center gap-2 rounded-xl border px-4 py-2.5 text-sm transition-all ${
-                                  toolsProvision === opt.value
+                                className={`flex flex-1 items-center gap-2 rounded-xl border px-4 py-2.5 text-sm transition-all ${toolsProvision === opt.value
                                     ? `${mc.bg} ${mc.text} ${mc.border}`
                                     : 'border-white/10 text-gray-400 hover:bg-white/5'
-                                }`}
+                                  }`}
                               >
                                 <opt.icon className="h-4 w-4" />
                                 {opt.label}
@@ -815,11 +814,10 @@ export default function CreatePost() {
                                 key={opt.value}
                                 type="button"
                                 onClick={() => setUrgency(opt.value)}
-                                className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition-all ${
-                                  urgency === opt.value
+                                className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition-all ${urgency === opt.value
                                     ? `bg-white/10 ${opt.color} border-white/20`
                                     : 'border-white/10 text-gray-500 hover:bg-white/5'
-                                }`}
+                                  }`}
                               >
                                 {opt.label}
                               </button>

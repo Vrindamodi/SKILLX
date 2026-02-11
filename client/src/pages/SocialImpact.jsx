@@ -228,7 +228,7 @@ export default function SocialImpact() {
             <div>
               <h1 className="text-2xl font-bold sm:text-3xl">
                 Social Impact{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                <span className="text-transparent bg-clip-text bg-emerald-400">
                   Dashboard
                 </span>
               </h1>
@@ -281,7 +281,7 @@ export default function SocialImpact() {
                 <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Carbon Footprint Reduction</p>
                 <div className="relative h-3 overflow-hidden rounded-full bg-white/10 mb-2">
                   <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400"
+                    className="h-full rounded-full bg-emerald-500"
                     initial={{ width: 0 }}
                     animate={{ width: `${personalImpact.carbonFootprintReduction}%` }}
                     transition={{ duration: 1.2, ease: 'easeOut' }}
@@ -350,7 +350,7 @@ export default function SocialImpact() {
                           </div>
                           <div className="h-2 overflow-hidden rounded-full bg-white/10">
                             <div
-                              className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400"
+                              className="h-full rounded-full bg-emerald-500"
                               style={{ width: `${badge.progress}%` }}
                             />
                           </div>
@@ -371,7 +371,7 @@ export default function SocialImpact() {
           transition={{ delay: 0.3 }}
           className="mb-10"
         >
-          <GlassCard className="p-6 border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-teal-500/5">
+          <GlassCard className="p-6 border-emerald-500/20 bg-emerald-500/5">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <h3 className="font-semibold text-white flex items-center gap-2">
@@ -653,7 +653,7 @@ export default function SocialImpact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <GlassCard className="p-8 text-center border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 via-teal-500/5 to-green-500/5">
+          <GlassCard className="p-8 text-center border-emerald-500/20 bg-emerald-500/5">
             <div className="flex justify-center mb-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/15">
                 <Globe className="h-8 w-8 text-emerald-400" />

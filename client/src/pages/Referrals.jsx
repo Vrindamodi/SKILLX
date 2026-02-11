@@ -176,7 +176,7 @@ export default function Referrals() {
 
         {/* Referral Link Card */}
         <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1 }}>
-          <GlassCard className="p-6 mb-6 border-pink-500/20 bg-gradient-to-br from-pink-500/5 to-purple-500/5">
+          <GlassCard className="p-6 mb-6 border-pink-500/20 bg-pink-500/5">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto]">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Your Referral Code</p>
@@ -294,7 +294,7 @@ export default function Referrals() {
               </div>
               <div className="h-3 overflow-hidden rounded-full bg-white/10">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-pink-500 to-purple-500"
+                  className="h-full rounded-full bg-pink-500"
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.min(milestoneProgress, 100)}%` }}
                   transition={{ duration: 1, ease: 'easeOut' }}
@@ -384,9 +384,9 @@ export default function Referrals() {
                     }`}
                   >
                     <div className={`flex h-10 w-10 items-center justify-center rounded-full flex-shrink-0 ${
-                      entry.rank === 1 ? 'bg-gradient-to-br from-yellow-400 to-amber-600' :
-                      entry.rank === 2 ? 'bg-gradient-to-br from-gray-300 to-gray-500' :
-                      entry.rank === 3 ? 'bg-gradient-to-br from-amber-600 to-orange-800' :
+                      entry.rank === 1 ? 'bg-yellow-500' :
+                      entry.rank === 2 ? 'bg-gray-500' :
+                      entry.rank === 3 ? 'bg-amber-600' :
                       'border border-white/10 bg-white/5'
                     }`}>
                       <span className={`text-sm font-bold ${entry.rank <= 3 ? 'text-white' : 'text-gray-400'}`}>

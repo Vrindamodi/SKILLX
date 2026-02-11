@@ -77,7 +77,7 @@ function StatCard({ icon: Icon, value, label, trend, color, subtitle }) {
   );
 }
 
-function ProgressBar({ label, value, max, color = 'from-blue-500 to-cyan-400', showPercent = true }) {
+function ProgressBar({ label, value, max, color = 'bg-blue-500', showPercent = true }) {
   const pct = max > 0 ? Math.min((value / max) * 100, 100) : 0;
   return (
     <div>
@@ -87,7 +87,7 @@ function ProgressBar({ label, value, max, color = 'from-blue-500 to-cyan-400', s
       </div>
       <div className="h-2 overflow-hidden rounded-full bg-white/10">
         <motion.div
-          className={`h-full rounded-full bg-gradient-to-r ${color}`}
+          className={`h-full rounded-full ${color}`}
           initial={{ width: 0 }}
           animate={{ width: `${pct}%` }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -97,7 +97,7 @@ function ProgressBar({ label, value, max, color = 'from-blue-500 to-cyan-400', s
   );
 }
 
-function BarChart({ data, color = 'from-blue-600 to-indigo-400' }) {
+function BarChart({ data, color = 'bg-blue-600' }) {
   const maxVal = Math.max(...data.map((d) => d.value), 1);
   return (
     <div className="space-y-2">
@@ -111,7 +111,7 @@ function BarChart({ data, color = 'from-blue-600 to-indigo-400' }) {
                   <span className="text-xs text-gray-400 font-medium">₹{(d.value / 1000).toFixed(1)}k</span>
                 </div>
                 <motion.div
-                  className={`w-full rounded-t-lg bg-gradient-to-t ${color}`}
+                  className={`w-full rounded-t-lg ${color}`}
                   initial={{ height: '0%' }}
                   animate={{ height: `${height}%` }}
                   transition={{ duration: 0.6, ease: 'easeOut', delay: i * 0.1 }}

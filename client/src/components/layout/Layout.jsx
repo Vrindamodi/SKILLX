@@ -155,7 +155,7 @@ export default function Layout() {
                     className="w-8 h-8 rounded-full object-cover ring-2 ring-dark-600"
                   />
                 ) : (
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-sm font-bold text-white ring-2 ring-dark-600">
+                  <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-sm font-bold text-white ring-2 ring-dark-600">
                     {displayName.charAt(0).toUpperCase()}
                   </div>
                 )}

@@ -303,7 +303,7 @@ function SkillsTab({ profile }) {
                   </div>
                   <div className="h-2 overflow-hidden rounded-full bg-white/10">
                     <motion.div
-                      className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                      className="h-full rounded-full bg-blue-500"
                       initial={{ width: 0 }}
                       animate={{ width: `${progress}%` }}
                       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -641,7 +641,7 @@ export default function Profile() {
     <div className="min-h-screen bg-gray-950 text-white">
       {/* ── Cover / Header ─────────────────────────── */}
       <div className="relative">
-        <div className="h-48 sm:h-56 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700">
+        <div className="h-48 sm:h-56 bg-blue-600">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml,...')] opacity-10" />
         </div>
 
@@ -769,7 +769,7 @@ export default function Profile() {
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-white/10">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400"
+                  className="h-full rounded-full bg-emerald-500"
                   initial={{ width: 0 }}
                   animate={{ width: `${trustScore}%` }}
                   transition={{ duration: 1, ease: 'easeOut' }}

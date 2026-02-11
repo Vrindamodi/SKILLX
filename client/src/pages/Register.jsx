@@ -118,7 +118,7 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-dark-950 to-dark-900 flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-dark-950 flex items-center justify-center px-4 py-10">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary-600/10 rounded-full blur-3xl" />
@@ -136,7 +136,7 @@ export default function Register() {
           <Link to="/" className="inline-block">
             <h1 className="text-4xl font-bold tracking-tight">
               <span className="text-white">Skill</span>
-              <span className="gradient-text">X</span>
+              <span className="text-blue-500">X</span>
             </h1>
           </Link>
           <p className="text-dark-400 mt-2">Create your account to get started</p>

@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import ProfileSetup from './pages/ProfileSetup';
 import Dashboard from './pages/Dashboard';
 import Discover from './pages/Discover';
+import MyPosts from './pages/MyPosts';
 import CreatePost from './pages/CreatePost';
 import PostDetail from './pages/PostDetail';
 import SessionFlow from './pages/SessionFlow';
@@ -55,6 +56,7 @@ function App() {
         <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/discover" element={<Discover />} />
+          <Route path="/my-posts" element={<MyPosts />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/posts/:id" element={<PostDetail />} />
           <Route path="/sessions" element={<SessionFlow />} />

@@ -208,6 +208,7 @@ export const BADGES = [
 
 // --------------- INDIAN CITIES ---------------
 export const INDIAN_CITIES = [
+  'Siliguri',
   'Mumbai',
   'Delhi',
   'Bangalore',
@@ -235,6 +236,7 @@ export const LANGUAGES = [
   'English',
   'Hindi',
   'Bengali',
+  'Nepali',
   'Telugu',
   'Marathi',
   'Tamil',

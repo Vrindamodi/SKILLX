@@ -93,7 +93,7 @@ router.post('/chat', auth, async (req, res) => {
     });
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
       contents,
       config: {
         systemInstruction: STRAWBERRY_SYSTEM_PROMPT,
@@ -101,7 +101,8 @@ router.post('/chat', auth, async (req, res) => {
         temperature: 0.7,
       }
     });
-
+    
+    
     const aiResponse = response.text;
 
     res.json({
