@@ -47,7 +47,7 @@ export function AuthProvider({ children }) {
 
   const login = useCallback(async (credentials) => {
     const res = await authAPI.login(credentials);
-    const { token: newToken, user: newUser } = res.data;
+    const { token: newToken, user: newUser } = res.data.data;
 
     localStorage.setItem(TOKEN_KEY, newToken);
     localStorage.setItem(USER_KEY, JSON.stringify(newUser));
@@ -59,7 +59,7 @@ export function AuthProvider({ children }) {
 
   const register = useCallback(async (userData) => {
     const res = await authAPI.register(userData);
-    const { token: newToken, user: newUser } = res.data;
+    const { token: newToken, user: newUser } = res.data.data;
 
     localStorage.setItem(TOKEN_KEY, newToken);
     localStorage.setItem(USER_KEY, JSON.stringify(newUser));
