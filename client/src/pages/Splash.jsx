@@ -56,7 +56,7 @@ export default function Splash() {
   }, [progress, loading, isAuthenticated, navigate]);
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-b from-dark-950 to-dark-900 flex flex-col items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 bg-dark-950 flex flex-col items-center justify-center overflow-hidden">
       {/* Background decorative circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary-600/10 rounded-full blur-3xl" />
@@ -73,7 +73,7 @@ export default function Splash() {
       >
         <h1 className="text-7xl sm:text-8xl font-bold tracking-tight select-none">
           <span className="text-white">Skill</span>
-          <span className="bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400 bg-clip-text text-transparent">
+          <span className="bg-primary-400 bg-clip-text text-transparent">
             X
           </span>
         </h1>
@@ -101,7 +101,7 @@ export default function Splash() {
       >
         <div className="w-full h-1 bg-dark-800 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transition-all duration-100 ease-linear"
+            className="h-full bg-primary-500 rounded-full transition-all duration-100 ease-linear"
             style={{ width: `${progress}%` }}
           />
         </div>

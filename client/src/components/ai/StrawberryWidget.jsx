@@ -176,7 +176,7 @@ export default function StrawberryWidget() {
 
         const aiContent =
           res.data?.response ||
-          res.data?.message ||
+          res.data.data?.message ||
           "I'm sorry, I couldn't process that right now. Please try again.";
 
         const aiMessage = {
@@ -244,7 +244,7 @@ export default function StrawberryWidget() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-[9999] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-pink-600 shadow-2xl shadow-pink-500/30 transition-shadow hover:shadow-pink-500/50"
+            className="fixed bottom-6 right-6 z-[9999] flex h-14 w-14 items-center justify-center rounded-full bg-rose-500 shadow-2xl shadow-pink-500/30 transition-shadow hover:shadow-pink-500/50"
           >
             {/* Pulse ring */}
             <motion.span
@@ -271,7 +271,7 @@ export default function StrawberryWidget() {
             style={{ height: '500px', maxHeight: 'calc(100vh - 48px)' }}
           >
             {/* ── Header ────────────────────────────── */}
-            <div className="flex items-center justify-between border-b border-white/10 bg-gradient-to-r from-rose-500/10 to-pink-500/10 px-4 py-3">
+            <div className="flex items-center justify-between border-b border-white/10 bg-rose-500/10 px-4 py-3">
               <div className="flex items-center gap-2.5">
                 <div className="relative">
                   <span className="text-xl" role="img" aria-label="Strawberry">
@@ -291,7 +291,7 @@ export default function StrawberryWidget() {
                   className="rounded-lg p-1.5 text-gray-400 hover:bg-white/10 hover:text-white transition-colors"
                   title="Minimize"
                 >
-                  <Minus className="h-4 w-4" />
+                  <X className="h-4 w-4" />
                 </button>
               </div>
             </div>
@@ -407,7 +407,7 @@ export default function StrawberryWidget() {
                 <button
                   onClick={() => sendMessage(input)}
                   disabled={!input.trim() || isLoading}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 text-white transition-all hover:opacity-90 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-500 text-white transition-all hover:opacity-90 disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   <SendHorizontal className="h-4 w-4" />
                 </button>

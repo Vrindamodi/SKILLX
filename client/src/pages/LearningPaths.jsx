@@ -271,7 +271,7 @@ function EnrolledPathCard({ path }) {
         <div className="mb-4">
           <div className="h-2.5 overflow-hidden rounded-full bg-white/10">
             <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+              className="h-full rounded-full bg-blue-500"
               initial={{ width: 0 }}
               animate={{ width: `${path.progress}%` }}
               transition={{ duration: 1, ease: 'easeOut' }}

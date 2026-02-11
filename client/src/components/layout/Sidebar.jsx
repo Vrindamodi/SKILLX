@@ -17,6 +17,7 @@ import {
   Briefcase,
   ClipboardList,
   ChevronLeft,
+  SquarePen,  
   X,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -25,14 +26,15 @@ import { useMode } from '../../context/ModeContext';
 const NAV_ITEMS = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/discover', label: 'Discover', icon: Compass },
+  { to: '/my-posts', label: 'My Posts', icon: SquarePen },
   { to: '/sessions', label: 'My Sessions', icon: Calendar },
   { to: '/chat', label: 'Chat', icon: MessageCircle },
-  { to: '/wallet', label: 'Wallet', icon: Wallet },
+  { to: '/leaderboard', label: 'Leaderboard', icon: Trophy },
+  { to: '/social-impact', label: 'Social Impact', icon: Heart },
   { to: '/learning-paths', label: 'Learning Paths', icon: GraduationCap },
   { to: '/community', label: 'Community', icon: Users },
-  { to: '/leaderboard', label: 'Leaderboard', icon: Trophy },
+  { to: '/wallet', label: 'Wallet', icon: Wallet },
   { to: '/analytics', label: 'Analytics', icon: BarChart3 },
-  { to: '/social-impact', label: 'Social Impact', icon: Heart },
 ];
 
 const MODE_ICONS = {
@@ -91,7 +93,7 @@ export default function Sidebar({ isOpen, onClose }) {
             <span className="text-2xl font-bold tracking-tight text-white">
               Skill
             </span>
-            <span className="text-2xl font-black bg-gradient-to-br from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="text-2xl text-primary-400 font-bold">
               X
             </span>
           </NavLink>
@@ -164,7 +166,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 className="w-9 h-9 rounded-full object-cover ring-2 ring-dark-600"
               />
             ) : (
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-sm font-bold text-white ring-2 ring-dark-600">
+              <div className="w-9 h-9 rounded-full bg-primary-500 flex items-center justify-center text-sm font-bold text-white ring-2 ring-dark-600">
                 {displayName.charAt(0).toUpperCase()}
               </div>
             )}

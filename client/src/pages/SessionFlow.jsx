@@ -551,7 +551,7 @@ function SessionDetail({ session, onUpdate, onToast }) {
           {/* Skill Capsule */}
           <GlassCard className="p-5 border-emerald-500/20">
             <div className="flex items-center gap-3 mb-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-cyan-500">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500">
                 <Award className="h-6 w-6 text-white" />
               </div>
               <div>

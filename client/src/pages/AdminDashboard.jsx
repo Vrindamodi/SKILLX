@@ -1111,7 +1111,7 @@ function AnalyticsTab() {
                     ₹{(r.amount / 1000).toFixed(0)}K
                   </span>
                   <div
-                    className="w-full rounded-t-lg bg-gradient-to-t from-yellow-600 to-yellow-400 transition-all duration-500"
+                    className="w-full rounded-t-lg bg--yellow-600 transition-all duration-500"
                     style={{
                       height: `${(r.amount / maxRevenue) * 100}%`,
                       minHeight: '8px',
@@ -1138,7 +1138,7 @@ function AnalyticsTab() {
                     {(u.users / 1000).toFixed(1)}K
                   </span>
                   <div
-                    className="w-full rounded-t-lg bg-gradient-to-t from-blue-600 to-blue-400 transition-all duration-500"
+                    className="w-full rounded-t-lg bg-blue-600"
                     style={{
                       height: `${(u.users / maxUsers) * 100}%`,
                       minHeight: '8px',

@@ -8,25 +8,25 @@ const slides = [
     icon: '\u{1F4DA}',
     title: 'Learn Anything',
     description: 'Find expert teachers for any skill',
-    color: 'from-blue-500/20 to-blue-600/5',
+    color: 'bg-blue-500',
   },
   {
     icon: '\u{1F9E0}',
     title: 'Teach & Earn',
     description: 'Share your knowledge, earn money',
-    color: 'from-green-500/20 to-green-600/5',
+    color: 'bg-green-500',
   },
   {
     icon: '\u23F1\uFE0F',
     title: 'Quick Expert Help',
     description: 'Rent-a-skill for instant solutions',
-    color: 'from-purple-500/20 to-purple-600/5',
+    color: 'bg-purple-500',
   },
   {
     icon: '\u{1F9F9}',
     title: 'Local Services',
     description: 'Find & offer services in your area',
-    color: 'from-orange-500/20 to-orange-600/5',
+    color: 'bg-orange-500',
   },
 ];
 
@@ -73,7 +73,7 @@ export default function Onboarding() {
   const slide = slides[currentSlide];
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-b from-dark-950 to-dark-900 flex flex-col">
+    <div className="fixed inset-0 bg-black flex flex-col">
       {/* Skip button */}
       {!isLastSlide && (
         <motion.div
@@ -104,12 +104,12 @@ export default function Onboarding() {
             className="w-full max-w-sm"
           >
             {/* Card */}
-            <div className={`glass-card p-8 text-center bg-gradient-to-b ${slide.color}`}>
+            <div className={`glass-card p-8 text-center ${slide.color}`}>
               {/* Icon */}
-              <div className="text-7xl mb-6">{slide.icon}</div>
+              {/* <div className="text-7xl mb-6">{slide.icon}</div> */}
 
               {/* Title */}
-              <h2 className="text-2xl font-bold text-white mb-3">
+              <h2 className="text-4xl font-bold text-white mb-3">
                 {slide.title}
               </h2>
 

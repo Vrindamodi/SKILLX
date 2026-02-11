@@ -247,7 +247,7 @@ function AddFundsModal({ onClose }) {
             <button
               type="submit"
               disabled={!amount || Number(amount) < 1 || loading}
-              className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 py-3 text-sm font-semibold text-white transition-all hover:from-blue-500 hover:to-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white transition-all hover:from-blue-500 hover:to-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               {loading ? 'Processing...' : `Add ₹${amount ? Number(amount).toLocaleString() : '0'}`}
@@ -433,7 +433,7 @@ function WithdrawModal({ onClose, balance }) {
             <button
               type="submit"
               disabled={!amount || Number(amount) < 100 || loading}
-              className="w-full rounded-xl bg-gradient-to-r from-orange-600 to-red-600 py-3 text-sm font-semibold text-white transition-all hover:from-orange-500 hover:to-red-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full rounded-xl bg-orange-600 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
               {loading ? 'Processing...' : `Withdraw ₹${amount ? Number(amount).toLocaleString() : '0'}`}
@@ -516,7 +516,7 @@ export default function Wallet() {
 
           {/* ── Balance Card ────────────────────────── */}
           <motion.div variants={item}>
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 p-6 sm:p-8 shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl bg-blue-600 p-6 sm:p-8 shadow-2xl">
               <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
               <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-white/10 blur-xl" />
               <div className="relative">
@@ -663,7 +663,7 @@ export default function Wallet() {
                         <div key={m.month} className="flex flex-1 flex-col items-center gap-1.5">
                           <span className="text-xs text-gray-400">₹{(m.amount / 1000).toFixed(1)}k</span>
                           <motion.div
-                            className="w-full rounded-t-lg bg-gradient-to-t from-blue-600 to-indigo-400"
+                            className="w-full rounded-t-lg bg-blue-600"
                             initial={{ height: 0 }}
                             animate={{ height: `${height}%` }}
                             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}

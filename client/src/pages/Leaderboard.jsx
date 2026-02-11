@@ -127,19 +127,19 @@ const LEVEL_COLORS = {
 function RankBadge({ rank }) {
   if (rank === 1)
     return (
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-amber-600 shadow-lg shadow-yellow-500/30">
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400 shadow-lg shadow-yellow-500/30">
         <Crown className="h-5 w-5 text-white" />
       </div>
     );
   if (rank === 2)
     return (
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-lg shadow-gray-400/20">
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-300 shadow-lg shadow-gray-400/20">
         <Medal className="h-5 w-5 text-white" />
       </div>
     );
   if (rank === 3)
     return (
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-amber-600 to-orange-800 shadow-lg shadow-orange-500/20">
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-600 shadow-lg shadow-orange-500/20">
         <Medal className="h-5 w-5 text-white" />
       </div>
     );
