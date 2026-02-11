@@ -97,9 +97,9 @@ export default function Splash() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 w-64 z-10"
+        className="absolute bottom-16 left-0 right-0 z-10 flex flex-col items-center px-4"
       >
-        <div className="w-full h-1 bg-dark-800 rounded-full overflow-hidden">
+        <div className="w-64 h-1 bg-dark-800 rounded-full overflow-hidden">
           <div
             className="h-full bg-primary-500 rounded-full transition-all duration-100 ease-linear"
             style={{ width: `${progress}%` }}
