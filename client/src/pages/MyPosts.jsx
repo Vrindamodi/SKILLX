@@ -8,6 +8,7 @@ import {
   Calendar, 
   MapPin, 
   Users,
+  IndianRupee,
   AlertCircle
 } from 'lucide-react';
 import { postAPI } from '../services/api';
@@ -168,7 +169,7 @@ export default function MyPosts() {
                   {/* Pricing & Actions */}
                   <div className="flex items-center justify-between border-t border-white/10 pt-4">
                     <div>
-                      <span className="text-xl font-bold text-white">${post.pricing?.amount}</span>
+                      <span className="text-xl font-bold text-white">₹{post.pricing?.amount}</span>
                       <span className="text-xs text-gray-500 ml-1">/{post.pricing?.per || 'hr'}</span>
                     </div>
                     
